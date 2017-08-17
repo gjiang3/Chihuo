@@ -13,37 +13,17 @@ public class RestaurantListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_list);
-        Log.e("Life cycle test", "We are at onCreate()");
 
         // Get ListView object from xml.
         ListView restaurantListView = (ListView) findViewById(R.id.restaurant_list);
 
 
         // Initialize an adapter.
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this,
-                R.layout.activity_restaurant_list_item,
-                R.id.restaurant_name,
-                getRestaurantNames());
+        RestaurantAdapter adapter = new RestaurantAdapter(this);
 
         // Assign adapter to ListView.
         restaurantListView.setAdapter(adapter);
     }
-
-    /**
-     * A dummy function to get fake restaurant names.
-     *
-     * @return an array of fake restaurant names.
-     */
-    private String[] getRestaurantNames() {
-        String[] names= {
-                "Restaurant1", "Restaurant2", "Restaurant3",
-                "Restaurant4", "Restaurant5", "Restaurant6",
-                "Restaurant7", "Restaurant8", "Restaurant9",
-                "Restaurant10", "Restaurant11", "Restaurant12"};
-        return names;
-    }
-
 
     @Override
     protected void onStart() {
