@@ -1,29 +1,53 @@
 package com.guohua.chihuo;
 
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.RelativeLayout;
 
-public class RestaurantListActivity extends AppCompatActivity {
+public class RestaurantListActivity extends AppCompatActivity implements RestaurantListFragment.OnItemSelectListener {
 
+    RestaurantListFragment listFragment;
+    RestaurantGridFragment gridFragment;
+
+    RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_list);
+        Log.e("Life cycle test", "We are at onCreate()");
 
-        // Get ListView object from xml.
-        ListView restaurantListView = (ListView) findViewById(R.id.restaurant_list);
+        relativeLayout = (RelativeLayout)findViewById(R.id.fragment_list_container);
+
+        //add list view
+        if (isTablet()) {
+            if (listFragment == null) {
+                listFragment = new RestaurantListFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_list_container, listFragment).commit();
+            }
+            relativeLayout.setVisibility(View.VISIBLE);
+        } else {
+            relativeLayout.setVisibility(View.GONE);
+        }
 
 
-        // Initialize an adapter.
-        RestaurantAdapter adapter = new RestaurantAdapter(this);
+        //add Gridview
+        if (gridFragment == null) {
+            gridFragment = new RestaurantGridFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_grid_container, gridFragment).commit();
+        }
 
-        // Assign adapter to ListView.
-        restaurantListView.setAdapter(adapter);
     }
+
+    private boolean isTablet() {
+        return (getApplicationContext().getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) >=
+                Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
 
     @Override
     protected void onStart() {
@@ -55,5 +79,9 @@ public class RestaurantListActivity extends AppCompatActivity {
         Log.e("Life cycle test", "We are at onDestroy()");
     }
 
+    @Override
+    public void onItemSelected(int position) {
+        gridFragment.onItemSelected(position);
+    }
 
 }

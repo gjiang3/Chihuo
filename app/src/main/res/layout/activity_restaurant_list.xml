@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_restaurant_list"
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_horizontal_margin"
+    android:orientation="horizontal"
     tools:context="com.guohua.chihuo.RestaurantListActivity">
 
+    <RelativeLayout
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_list_container"
+        android:visibility="gone">
+    </RelativeLayout>
 
-    <ListView android:id="@+id/restaurant_list"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-    </ListView>
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_grid_container">
+    </RelativeLayout>
+
+</LinearLayout>
