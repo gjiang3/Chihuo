@@ -1,6 +1,7 @@
 package com.guohua.chihuo;
 
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,25 +21,26 @@ public class RestaurantListActivity extends AppCompatActivity implements Restaur
         setContentView(R.layout.activity_restaurant_list);
         Log.e("Life cycle test", "We are at onCreate()");
 
-        relativeLayout = (RelativeLayout)findViewById(R.id.fragment_list_container);
+        listFragment = new RestaurantListFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_list_container, listFragment).commit();
 
-        //add list view
-        if (isTablet()) {
-            if (listFragment == null) {
-                listFragment = new RestaurantListFragment();
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_list_container, listFragment).commit();
-            }
-            relativeLayout.setVisibility(View.VISIBLE);
-        } else {
-            relativeLayout.setVisibility(View.GONE);
-        }
-
-
-        //add Gridview
-        if (gridFragment == null) {
-            gridFragment = new RestaurantGridFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_grid_container, gridFragment).commit();
-        }
+//        new AsyncTask<Void, Void, Void>(){
+//            @Override
+//            protected Void doInBackground(Void... params) {
+//                YelpApi yelp = new YelpApi();
+//                yelp.searchForBusinessesByLocation("dinner", "San Francisco, CA", 20);
+//                return null;
+//            }
+//        }.execute();
+//
+//
+//        if (findViewById(R.id.fragment_container) != null) {
+//            listFragment =  new RestaurantListFragment();
+//            getSupportFragmentManager().beginTransaction()
+//                    .add(R.id.fragment_container, listFragment).commit();
+//        }
+//
+//
 
     }
 

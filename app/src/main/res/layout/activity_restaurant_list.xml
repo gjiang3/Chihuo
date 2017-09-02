@@ -12,16 +12,15 @@
     tools:context="com.guohua.chihuo.RestaurantListActivity">
 
     <RelativeLayout
-        android:layout_width="260dp"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_list_container"
-        android:visibility="gone">
-    </RelativeLayout>
-
-    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment_grid_container">
+        android:id="@+id/fragment_list_container">
     </RelativeLayout>
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/fragment_grid_container">-->
+    <!--</RelativeLayout>-->
 
 </LinearLayout>

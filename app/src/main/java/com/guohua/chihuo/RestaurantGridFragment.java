@@ -28,7 +28,6 @@ public class RestaurantGridFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_restaurant_grid, container, false);
         gridView = (GridView) view.findViewById(R.id.restaurant_grid);
-        gridView.setAdapter(new RestaurantAdapter(getActivity()));
         return view;
     }
 
