@@ -1,5 +1,6 @@
 package com.guohua.chihuo;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,7 @@ public class RestaurantListActivity extends AppCompatActivity implements Restaur
     RestaurantListFragment listFragment;
     RestaurantGridFragment gridFragment;
 
-    RelativeLayout relativeLayout;
+//    RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,26 +22,17 @@ public class RestaurantListActivity extends AppCompatActivity implements Restaur
         setContentView(R.layout.activity_restaurant_list);
         Log.e("Life cycle test", "We are at onCreate()");
 
-        listFragment = new RestaurantListFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_list_container, listFragment).commit();
-
-//        new AsyncTask<Void, Void, Void>(){
-//            @Override
-//            protected Void doInBackground(Void... params) {
-//                YelpApi yelp = new YelpApi();
-//                yelp.searchForBusinessesByLocation("dinner", "San Francisco, CA", 20);
-//                return null;
-//            }
-//        }.execute();
-//
-//
-//        if (findViewById(R.id.fragment_container) != null) {
-//            listFragment =  new RestaurantListFragment();
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.fragment_container, listFragment).commit();
-//        }
-//
-//
+        if (findViewById(R.id.fragment_container) != null) {
+            Intent intent = getIntent();
+            if (intent.getExtras() != null) {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragment_list_container, new BackendListFragment()).commit();
+            } else {
+                listFragment =  new RestaurantListFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragment_list_container, listFragment).commit();
+            }
+        }
 
     }
 

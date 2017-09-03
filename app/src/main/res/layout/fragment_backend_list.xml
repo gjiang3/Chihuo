@@ -1,0 +1,34 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.guohua.chihuo.BackendListFragment">
+
+    <LinearLayout
+        android:id="@+id/backend_linearlayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="Restaurant"
+            android:textColor="#F3BB43"
+            android:background="#434343"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+        <TextView
+            android:text="Recommendation"
+            android:background="#434343"
+            android:layout_width="match_parent"
+            android:textSize="24sp"
+            android:layout_height="40dp"/>
+
+        <ListView android:id="@+id/backend_list"
+            android:background="#F2EBD9"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+        </ListView>
+    </LinearLayout>
+
+</FrameLayout>

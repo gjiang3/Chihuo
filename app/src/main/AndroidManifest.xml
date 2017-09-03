@@ -18,16 +18,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBpjGkoJdRstcC6X14_6J2hkFd_7znUU-M" />
 
-        <activity android:name=".RestaurantListActivity">
+        <activity android:name=".RestaurantListActivity"></activity>
+        <activity android:name=".RestaurantMapActivity"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RestaurantMapActivity">
-
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>
