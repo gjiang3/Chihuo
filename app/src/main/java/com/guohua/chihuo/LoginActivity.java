@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = md5(user_name + md5(user_password));
 
         //backend url we want to connect
-        String url = "http://13.59.127.244/Dashi/LoginServlet?user_id=" + user_name + "&password=" + password;
+        String url = "http://13.59.127.244/Eater/LoginServlet?user_id=" + user_name + "&password=" + password;
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
